@@ -1,9 +1,9 @@
 var BearerStrategy = require('passport-http-bearer').Strategy;
-var db = require('../models');
+var db = require('../../models');
 
 module.exports = function (passport) {
   passport.use(new BearerStrategy((accessToken, next) => {
-    db.sys_user.findOne({ where : { Token: accessToken }}).then(user => {
+    db.User.findOne({ where : { Token: accessToken }}).then(user => {
       if(user) {
         next(null, user);
       }

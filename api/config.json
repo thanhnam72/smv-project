@@ -2,15 +2,7 @@
     "port": 1338,
     "security": {
         "tokenLife" : 120,
-        "EnableAuth": false
-    },
-    "dbconfig" : {
-      "host": "103.48.194.70",
-      "port": 3306,
-      "dialect": "mysql",
-      "userid": "apsp2018",
-      "password": "apsp2018@dolphinsolutions.vn",
-      "database": "econtractdb_dev"
+        "EnableAuth": true
     },
     "storeFile": "/publics",
     "default": {
