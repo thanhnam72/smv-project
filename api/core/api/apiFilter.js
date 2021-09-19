@@ -11,8 +11,8 @@ module.exports = function (app)
   }
 
 	var filter = function(req,res,next) {
-    // console.log(req);
-    if (config.get("security").EnableAuth) {
+    var anonymousRoutes = config.get("allowAnonymouses");
+    if (config.get("security").EnableAuth && anonymousRoutes.indexOf(req.url) < 0) {
       passport.authenticate('bearer', function(err, user, info) {
         if (user === false) {
           return res.createResponse(res, null,'Invalid token', 401);

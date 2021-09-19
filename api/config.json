@@ -5,6 +5,9 @@
         "EnableAuth": true
     },
     "storeFile": "/publics",
+    "allowAnonymouses": [
+      "/movie/all"
+    ],
     "default": {
         "api": {
             "version" : "v1"

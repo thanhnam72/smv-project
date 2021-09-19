@@ -15,7 +15,7 @@ router.post('/share', async (req, res) => {
   res.createResponse(res, true)
 });
 
-router.get('/all', async (req, res) => {
+router.get('/all',async (req, res) => {
   var movies = await db.Movie.findAll({
     include: [{
       model: db.User,
