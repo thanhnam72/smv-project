@@ -9,14 +9,20 @@ router.post('/share', async (req, res) => {
     id: id,
     title: "Movie " + id,
     url: req.body.url,
-    sharedBy: '',
+    sharedBy: req.userContext.userId,
   })
 
   res.createResponse(res, true)
 });
 
 router.get('/all', async (req, res) => {
-  var movies = await db.Movie.findAll();
+  var movies = await db.Movie.findAll({
+    include: [{
+      model: db.User,
+      as: 'user',
+      attributes: ['email']
+    }]
+  });
 
   res.createResponse(res, movies)
 });

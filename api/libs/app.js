@@ -6,13 +6,26 @@ var cookieParser    = require('cookie-parser');
 var bodyParser      = require('body-parser');
 var passport        = require('passport');
 var fs              = require('fs');
+var cors            = require('cors');
 require('./auth/auth')(passport);
 var methodOverride = require('method-override');
 
 //initialize app
 var app = express();
 
+var whitelist = ['http://localhost:3000']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (process.env.NODE_ENV == 'development' || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 //call use module
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

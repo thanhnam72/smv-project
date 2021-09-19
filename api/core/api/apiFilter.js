@@ -11,11 +11,18 @@ module.exports = function (app)
   }
 
 	var filter = function(req,res,next) {
+    // console.log(req);
     if (config.get("security").EnableAuth) {
       passport.authenticate('bearer', function(err, user, info) {
         if (user === false) {
-          return res.createResponse(res, null,'Token Invalid', 401);
+          return res.createResponse(res, null,'Invalid token', 401);
         } else {
+          req.userContext = {
+            userId: user.id,
+            token: user.token,
+            email: user.email
+          }
+
           next();
         }
       })(req, res, next);

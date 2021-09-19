@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model, ForeignKeyConstraintError
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING(100),
     token: DataTypes.STRING(200)
   }, {
+    underscored: false,
     sequelize,
     modelName: 'User',
   });
