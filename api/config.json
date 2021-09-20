@@ -10,7 +10,7 @@
     ],
     "default": {
         "api": {
-            "version" : "v1"
+            "version" : "v1.1"
         },
         "user": {
             "username": "myapi",
