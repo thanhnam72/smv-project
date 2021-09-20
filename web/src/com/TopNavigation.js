@@ -52,6 +52,7 @@ class TopNavigation extends Component {
     if (result && !!result.data && !!result.data.Token) {
       localStorage.setItem('access_token', result.data.Token);
       this.setState({
+        userEmail: result.data.Username,
         isAuthenticated: true
       })
     }
