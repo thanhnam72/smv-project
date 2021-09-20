@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import MovieItem from './MovieItem';
+import MovieItem from '../com/MovieItem';
 import MovieService from '../services/movieService';
 
 class MovieListContainer extends Component {

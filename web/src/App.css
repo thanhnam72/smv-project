@@ -286,3 +286,19 @@ fieldset {
       margin-top: 10px;
   }
 }
+
+.loader-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: #f0e5e5ad;
+}
+.loader{
+  left: 45%;
+  top: 30%;
+  z-index: 1000;
+  position: absolute;
+}

@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import UserService from '../services/userService';
 import { useHistory } from "react-router-dom";
 import Popup from 'react-popup';
+import { hideLoading, showLoading } from "../actions/index";
+import { connect } from 'react-redux';
 
 class TopNavigation extends Component {
   userService = new UserService();
@@ -18,7 +20,7 @@ class TopNavigation extends Component {
 
   async componentDidMount() {
     var isAuth = this.userService.hasAuthenticated();
-
+    
     if (isAuth) {
       var userInfo = await this.userService.getUserInfo();
 
@@ -48,6 +50,8 @@ class TopNavigation extends Component {
       grant_type: "password"
     }
 
+    this.props.dispatch(showLoading());
+
     const result = await this.userService.login(payload);
 
     if (result && !!result.data && !!result.data.Token) {
@@ -59,6 +63,8 @@ class TopNavigation extends Component {
     } else {
       Popup.alert(result.messageError, 'Error');
     }
+
+    this.props.dispatch(hideLoading());
   }
 
   onShareMovieClicked = () => {
@@ -107,8 +113,10 @@ class TopNavigation extends Component {
   }
 }
 
-export default function (props) {
+const mapStateToProps = state =>({})
+
+export default connect(mapStateToProps)((props) => {
   const history = useHistory();
 
   return <TopNavigation {...props} history={history} />;
-}
+});

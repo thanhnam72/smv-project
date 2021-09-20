@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MovieService from '../services/movieService';
 import { useHistory } from "react-router-dom";
+import { hideLoading, showLoading } from "../actions/index";
+import { connect } from 'react-redux';
 
 class MovieShared extends Component {
   movieService = new MovieService();
@@ -23,7 +25,12 @@ class MovieShared extends Component {
   }
 
   onShareClicked = async () => {
-    await this.movieService.shareMovie(this.state.url)
+    this.props.dispatch(showLoading());
+
+    await this.movieService.shareMovie(this.state.url);
+
+    this.props.dispatch(hideLoading());
+
     this.props.history.push('/');
   }
 
@@ -49,8 +56,10 @@ class MovieShared extends Component {
   }
 }
 
-export default function(props) {
+const mapStateToProps = state =>({})
+
+export default connect(mapStateToProps)((props) => {
   const history = useHistory();
 
   return <MovieShared {...props} history={history} />;
-}
+});
