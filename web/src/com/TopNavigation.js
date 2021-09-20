@@ -63,7 +63,7 @@ class TopNavigation extends Component {
 
   onLogoutClicked = () => {
     localStorage.removeItem("access_token");
-    this.props.history.push('/');
+    window.location.reload();
   }
 
   render() {
