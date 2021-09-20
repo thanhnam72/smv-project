@@ -1,8 +1,22 @@
 import axios from 'axios';
 
 class UserService {
-  login() {
-    return axios.post(`${process.env.REACT_APP_API_URI}/movie/all`);
+  async login(payload) {
+    return axios.post(`${process.env.REACT_APP_API_BASE_URI}/oauth/token`, payload)
+      .then(resp => resp.data);
+  }
+
+  getUserInfo() {
+    return axios.post(`${process.env.REACT_APP_API_BASE_URI}/api/user`, { }, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem("access_token")
+      }
+    }).then(resp => resp.data);
+  }
+
+  hasAuthenticated() {
+    const accessToken = localStorage.getItem("access_token");
+    return !!accessToken;
   }
 }
 
