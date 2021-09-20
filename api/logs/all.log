@@ -2654,3 +2654,6 @@
 {"level":"info","message":"Express server listening on port 1338","timestamp":"2021-09-20T04:00:14.273Z"}
 {"level":"info","message":"Express server listening on port 1338","timestamp":"2021-09-20T04:00:15.053Z"}
 {"level":"info","message":"Express server listening on port 1338","timestamp":"2021-09-20T04:57:42.680Z"}
+{"level":"error","message":"POST 200 Not allowed by CORS","timestamp":"2021-09-20T08:49:45.752Z"}
+{"level":"error","message":"GET 200 Not allowed by CORS","timestamp":"2021-09-20T14:00:27.244Z"}
+{"level":"error","message":"GET 200 Not allowed by CORS","timestamp":"2021-09-20T14:01:08.698Z"}

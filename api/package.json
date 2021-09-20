@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "SET NODE_ENV=development& node ./bin/www",
-    "auto": "SET NODE_ENV=development& nodemon ./bin/www"
+    "auto": "SET NODE_ENV=development& nodemon ./bin/www",
+    "test": "SET NODE_ENV=test& sequelize db:create& sequelize db:migrate& sequelize db:seed:undo:all& sequelize db:seed:all& mocha --timeout 10000"
   },
   "dependencies": {
     "body-parser": "~1.8.x",
@@ -60,5 +61,11 @@
     "browser": true,
     "node": true
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "chai-http": "2.0.1",
+    "mocha": "2.4.5",
+    "passport-mock-strategy": "^2.0.0"
+  }
 }

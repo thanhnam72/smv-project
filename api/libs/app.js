@@ -20,8 +20,7 @@ var whitelist = [
 
 var corsOptions = {
   origin: function (origin, callback) {
-    console.log('origin', origin);
-    if (process.env.NODE_ENV == 'development' || whitelist.indexOf(origin) !== -1) {
+    if (process.env.NODE_ENV !== 'production' || whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
