@@ -91,7 +91,7 @@ class TopNavigation extends Component {
 
             {this.state.isAuthenticated && (
               <Fragment>
-                <label className="mgr-10">test@gmail.com</label>
+                <label className="mgr-10">{this.state.userEmail}</label>
                 <button type="button" className="btn btn-primary mgr-10" onClick={this.onShareMovieClicked}>Share a movie</button>
                 <button type="button" className="btn btn-primary mgr-10" onClick={this.onLogoutClicked}>Logout</button>
               </Fragment>
