@@ -17,7 +17,16 @@ class MovieListContainer extends Component {
   async componentDidMount() {
     var result = await this.movieService.getMovies();
 
-    console.log(result);
+    if(result && result.data) {
+      this.setState({
+        movies: _.map(result.data.data, (item) => ({
+          id: item.id,
+          title: item.title,
+          sharedBy: item.user.email,
+          url: item.url
+        }))
+      })
+    }
   }
 
   render() {
