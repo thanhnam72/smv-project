@@ -13,7 +13,11 @@ var methodOverride = require('method-override');
 //initialize app
 var app = express();
 
-var whitelist = ['http://localhost:3000']
+var whitelist = [
+  'http://localhost:3000',
+  'https://shared-movie.herokuapp.com'
+]
+
 var corsOptions = {
   origin: function (origin, callback) {
     if (process.env.NODE_ENV == 'development' || whitelist.indexOf(origin) !== -1) {
