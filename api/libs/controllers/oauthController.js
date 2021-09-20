@@ -13,9 +13,12 @@ router.post('/token', async function (req, res) {
     res.createResponse(res, null, "grant_type is invalid", 400);
     return;
   }
+
+  var inputPassword = Utils.encryptPassword(req.body.password);
+  
   var data = {
     Email: req.body.username,
-    Password: Utils.encryptPassword(req.body.password)
+    // Password: Utils.encryptPassword(req.body.password)
   };
 
   var user = await db.User.findOne({ where: data });
@@ -31,6 +34,11 @@ router.post('/token', async function (req, res) {
     await db.User.create(user);
 
   } else {
+    if(user.password !== inputPassword) {
+      res.createResponse(res, null, "Password is incorrect", 400);
+      return;
+    }
+
     user.token = Utils.genToken();
 
     await user.save();
