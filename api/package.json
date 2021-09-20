@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "SET NODE_ENV=development& node ./bin/www",
-    "auto": "SET NODE_ENV=production& nodemon ./bin/www"
+    "auto": "SET NODE_ENV=development& nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.8.x",
