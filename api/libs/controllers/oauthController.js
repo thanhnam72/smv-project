@@ -17,8 +17,7 @@ router.post('/token', async function (req, res) {
   var inputPassword = Utils.encryptPassword(req.body.password);
   
   var data = {
-    Email: req.body.username,
-    // Password: Utils.encryptPassword(req.body.password)
+    Email: req.body.username
   };
 
   var user = await db.User.findOne({ where: data });
