@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import UserService from '../services/userService';
 import { useHistory } from "react-router-dom";
+import Popup from 'react-popup';
 
 class TopNavigation extends Component {
   userService = new UserService();
@@ -18,11 +19,11 @@ class TopNavigation extends Component {
   async componentDidMount() {
     var isAuth = this.userService.hasAuthenticated();
 
-    if(isAuth) {
+    if (isAuth) {
       var userInfo = await this.userService.getUserInfo();
 
       localStorage.setItem('user_email', userInfo.data.email);
-      
+
       this.setState({
         userEmail: userInfo.data.email,
         isAuthenticated: this.userService.hasAuthenticated()
@@ -55,6 +56,8 @@ class TopNavigation extends Component {
         userEmail: result.data.Username,
         isAuthenticated: true
       })
+    } else {
+      Popup.alert(result.messageError, 'Error');
     }
   }
 
@@ -104,7 +107,7 @@ class TopNavigation extends Component {
   }
 }
 
-export default function(props) {
+export default function (props) {
   const history = useHistory();
 
   return <TopNavigation {...props} history={history} />;
