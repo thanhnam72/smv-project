@@ -14,6 +14,11 @@ router.post('/token', async function (req, res) {
     return;
   }
 
+  if(!req.body.email || !req.body.password) {
+    res.createResponse(res, null, "Email or Password is incorrect", 400);
+    return;
+  }
+
   var inputPassword = Utils.encryptPassword(req.body.password);
   
   var data = {
