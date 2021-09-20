@@ -9,7 +9,6 @@
   },
   "scripts": {
     "start": "SET NODE_ENV=development& node ./bin/www",
-    "build": "node ./bin/www",
     "auto": "SET NODE_ENV=production& nodemon ./bin/www"
   },
   "dependencies": {
