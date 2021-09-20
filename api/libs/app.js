@@ -15,7 +15,7 @@ var app = express();
 
 var whitelist = [
   'http://localhost:3000',
-  'https://shared-movie.herokuapp.com'
+  'https://shared-movie-app.herokuapp.com'
 ]
 
 var corsOptions = {
