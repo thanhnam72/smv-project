@@ -1,6 +1,6 @@
 //include modules
 var express         = require('express');
-var session         = require('express-session');
+var session         = require('cookie-session');
 var path            = require('path');
 var cookieParser    = require('cookie-parser');
 var bodyParser      = require('body-parser');
